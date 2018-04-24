@@ -43,7 +43,10 @@ config :catcasts, CatcastsWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/catcasts_web/views/.*(ex)$},
-      ~r{lib/catcasts_web/templates/.*(eex)$}
+      ~r{lib/catcasts_web/templates/.*(eex)$},
+      ~r{lib/catcasts_web/controllers/.*(ex)$},
+      ~r{lib/catcasts_web/channels/.*(ex)$},
+      ~r{lib/catcasts/*/.*(ex)$}
     ]
   ]
 
