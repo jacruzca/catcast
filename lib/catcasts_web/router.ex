@@ -18,7 +18,7 @@ defmodule CatcastsWeb.Router do
     # Use the default browser stack
     pipe_through(:browser)
 
-    resources("/videos", VideoController)
+    resources("/videos", VideoController, except: [:edit, :update])
     get("/", PageController, :index)
   end
 
