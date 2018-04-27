@@ -1,5 +1,5 @@
 defmodule CatcastsWeb.NavigationTest do
-  use CatcastsWeb.ConnCase
+  use CatcastsWeb.ConnCase, async: true
   import Catcasts.Factory
 
   test "shows a sign in with Google link when not signed in", %{conn: conn} do
@@ -16,5 +16,21 @@ defmodule CatcastsWeb.NavigationTest do
       |> get("/")
 
     assert html_response(conn, 200) =~ "Sign out"
+  end
+
+  test "shows a link to the videos index", %{conn: conn} do
+    conn = get(conn, "/")
+    assert html_response(conn, 200) =~ "<a href=\"/videos\">Videos</a>"
+  end
+
+  test "shows a link to add video for a signed user", %{conn: conn} do
+    user = insert(:user)
+
+    conn =
+      conn
+      |> assign(:user, user)
+      |> get("/")
+
+    assert html_response(conn, 200) =~ "<a href=\"/videos/new\">Add video</a>"
   end
 end
